@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main.css')}}" rel="stylesheet">
+    <title>Clima Hoje</title>
+    <style>
+      .selected {
+        border: 2px solid blue; 
+      }
+  </style>
+
+
+</head>
+<body class="{{bg_body | default('bg-f-azul-claro')}}">
+    
+    <form action="/" method="post" class="flex justify-center -translate-y-20 items-center transition ease-in-out duration-[3000ms]  hover:translate-y-0 hover:transition hover:duration-[700ms]">
+        <div class="bg-slate-600 py-6 px-12 rounded-b-lg">
+        <input type="text" name="cidade" class="w-[35vw] h-10 px-4 mt-2" placeholder="Digite o nome da sua cidade">
+        <div class="flex justify-end items-center relative">
+        <select name="estado" class="absolute w-20 text-center rounded-lg h-8 mr-2 bottom-1 bg-f-verde  text-f-branco">
+            <option value="Pernambuco" selected disabled>UF</option>
+            {% for k,v in estados.items() %}
+
+            <option value="{{v}}">{{k}}</option>
+
+            {% endfor %}
+
+        </select>
+    
+    </div>
+   
+</div>
+
+<button type="submit" class="{{bg_button|default('bg-f-azul-escuro')}}  ml-8 py-6 px-12 rounded-lg 
+                              hover:text-white hover:bg-f-verde">
+  Pesquisar Clima
+</button>
+
+</form>
+
+<main class="flex justify-center items-center">
+     {% if horario == 'dia' %}
+     {% include "dia.html" %}
+     {% elif horario == 'noite' %}
+     {% include "noite.html" %}
+     {% else %}
+     {% include "template.html" %}
+     {% endif %}
+    
+
+    </section>
+
+</main>
+
+
+
+</body>
+</html>

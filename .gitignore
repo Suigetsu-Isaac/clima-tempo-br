@@ -1,0 +1,12 @@
+node_modules
+__pycache__
+
+pip-selfcheck.json
+
+.DS_Store
+Thumbs.db
+
+
+include
+lib
+lib64
